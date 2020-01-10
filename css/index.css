@@ -1,0 +1,31 @@
+/* common */
+* { margin: 0; padding: 0;}
+li, ul, ol { list-style: none; }
+.carousel { position: relative; }
+.carousel-ul { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.carousel-item { position: absolute; cursor: pointer; -webkit-filter: brightness(85%); filter: brightness(85%); transition: all .3s; }
+.carousel-item.current { filter: brightness(100%); -webkit-filter: brightness(100%); }
+.carousel-item:hover { filter: brightness(100%); -webkit-filter: brightness(100%); }
+.carousel-item a { width: 100%; float: left; cursor: pointer;  }
+.carousel-item a img { box-shadow: 1px 1px 5px #aaa; border-radius: 10px; cursor: pointer; }
+
+.carousel .arrow { cursor: pointer; position: absolute; top: 50%; margin-top: -20px; width: 40px; height: 40px; z-index: 50; }
+.carousel .arrow-prev {  left: 10px; }
+.carousel .arrow-next {  right: 10px; }
+/* heigth: width / 2 * Math.sqrt(2)
+ * 旋转同心圆
+ * before-top: (width / 2) as radius + radius / 2 
+ * after-top: height - (((width / 2) as radius) + radius / 2)
+ */
+.carousel .arrow-prev::before { content: ''; position: absolute; width: 6px; height: 20px; background: #ddd; left: 17px; top: 4.5px; transform: rotate(45deg); border-radius: 6px; box-sizing: border-box; }
+.carousel .arrow-prev::after { content: ''; position: absolute; width: 6px; height: 20px; top: 20px; background: #ddd; left: 17px; top: 15.5px; transform: rotate(-45deg); border-radius: 6px; box-sizing: border-box; }
+
+.carousel .arrow-next::before { content: ''; position: absolute; width: 6px; height: 20px; background: #ddd; right: 17px; top: 4.5px; transform: rotate(-45deg); border-radius: 6px; box-sizing: border-box; }
+.carousel .arrow-next::after { content: ''; position: absolute; width: 6px; height: 20px; top: 20px; background: #ddd; right: 17px; top: 15.5px; transform: rotate(45deg); border-radius: 6px; box-sizing: border-box; }
+
+.carousel .list-ul { display: flex; justify-content: center; position: absolute; min-width: 100px; height: 30px; background: rgba(0, 0, 0, .2); padding: 0 5px; align-items: center; bottom: 10px; right: 10%; border-radius: 20px; z-index: 40; text-align: center; }
+.carousel .list-ul .list-li__item { width: 12px; height: 12px; background: #fff; margin: 0 3px; border-radius: 100%; cursor: pointer; transition: all .3s; }
+.carousel .list-ul .list-li__item.active { background: orange; }
+
+/* addition */
+

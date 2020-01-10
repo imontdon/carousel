@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>同心</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="carousel" data-setting='{
+    "width": 1344,
+    "height": 400,
+    "cardWidth": 340,
+    "cardHeight": 190,
+    "autoPlay": false,
+    "duration": 3000,
+    "vertical": 15,
+    "horizontal": 200,
+    "horizontalRate": 20,
+    "canJump": true,
+    "showArrow": true,
+    "bottom": 50,
+    "showCircle": true,
+    "activeCircleBgColor": "red",
+    "force": true
+  }'>
+    <ul class="carousel-ul">
+      <li class="carousel-item"><a href="#"><img src="./images/0.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/1.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/2.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/3.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/4.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/5.png" alt=""></a></li>
+      <li class="carousel-item"><a href="#"><img src="./images/6.png" alt=""></a></li>
+    </ul>
+    <div class="arrow arrow-prev"></div>
+    <div class="arrow arrow-next"></div>
+  </div>
+  <script src="./js/index.js"></script>
+  <script>
+    const c = new Carousel(document.querySelector('.carousel'))
+    c.init()
+  </script>
+</body>
+</html>
+
+<!-- 
+
+  {
+                                        "width": 1344,
+                                        "height": 400,
+                                        "cardWidth": 340,
+                                        "cardHeight": 190,
+                                        "autoPlay": true,
+                                        "duration": 3000,
+                                        "vertical": 15,
+                                        "horizontal": 200,
+                                        "horizontalRate": 20,
+                                        "canJump": false,
+                                        "showArrow": true,
+                                        "bottom": 50,
+                                        "showCircle": true,
+                                        "activeCircleBgColor": "red",
+                                        "force": true
+                                      }
+ -->
+
+ <!-- 
+
+
+  {
+                                        "width": 340,
+                                        "height": 190,
+                                        "cardWidth": 340,
+                                        "cardHeight": 190,
+                                        "autoPlay": false,
+                                        "duration": 3000,
+                                        "vertical": 0,
+                                        "horizontal": 340,
+                                        "showArrow": true,
+                                        "bottom": 0,
+                                        "showCircle": true,
+                                        "activeCircleBgColor": "red",
+                                      }
+  -->
