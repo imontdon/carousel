@@ -7,9 +7,9 @@ li, ul, ol { list-style: none; }
 .carousel-item.current { filter: brightness(100%); -webkit-filter: brightness(100%); }
 .carousel-item:hover { filter: brightness(100%); -webkit-filter: brightness(100%); }
 .carousel-item a { width: 100%; float: left; cursor: pointer;  }
-.carousel-item a img { box-shadow: 1px 1px 5px #aaa; border-radius: 10px; cursor: pointer; }
-
-.carousel .arrow { cursor: pointer; position: absolute; top: 50%; margin-top: -20px; width: 40px; height: 40px; z-index: 50; }
+.carousel-item a img, .carousel-item img { box-shadow: 1px 1px 5px #aaa; border-radius: 10px; cursor: pointer; }
+.carousel-item img { min-width: 100%; max-width: 100%; height: auto; display: inline-block; }
+.carousel .arrow { cursor: pointer; position: absolute; top: 50%; transform: translateY(-20px); width: 40px; height: 40px; z-index: 50; }
 .carousel .arrow-prev {  left: 10px; }
 .carousel .arrow-next {  right: 10px; }
 /* heigth: width / 2 * Math.sqrt(2)

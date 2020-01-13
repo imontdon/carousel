@@ -41,6 +41,7 @@ var defaultSet = {
     showCircle: false,
     canJump: false,
     reverse: false,
+    rective: false,
     autoPlay: false,
     showArrow: false,
     force: false
@@ -217,7 +218,16 @@ var Carousel = /** @class */ (function () {
      */
     Carousel.prototype.getSetting = function () {
         var userSetting = JSON.parse(this.element.getAttribute('data-setting'));
-        var setting = __assign({}, userSetting, { leftKernel: (userSetting.width / 2) - (userSetting.cardWidth / 2), rightKernel: (userSetting.width / 2) + (userSetting.cardWidth / 2) });
+        if (userSetting.rective) {
+            var clientWidth = document.documentElement.clientWidth;
+            var rate = 1;
+            rate = userSetting.width / clientWidth;
+            userSetting.width = clientWidth;
+            userSetting.height = userSetting.height / rate;
+            userSetting.cardWidth = userSetting.cardWidth / rate;
+            userSetting.cardHeight = userSetting.cardHeight / rate;
+        }
+        var setting = __assign(__assign({}, userSetting), { leftKernel: (userSetting.width / 2) - (userSetting.cardWidth / 2), rightKernel: (userSetting.width / 2) + (userSetting.cardWidth / 2) });
         return setting;
     };
     /**
@@ -249,7 +259,7 @@ var Carousel = /** @class */ (function () {
      * @description 初始化
      */
     Carousel.prototype.init = function () {
-        this.setting = __assign({}, this.setting, this.getSetting());
+        this.setting = __assign(__assign({}, this.setting), this.getSetting());
         this.element.style.cssText = "width: " + this.setting.width + "px; height: " + this.setting.height + "px; overflow: hidden;";
         this.setCard();
         if (this.setting.autoPlay) { // 自动播放
@@ -381,11 +391,15 @@ var CarouselItem = /** @class */ (function (_super) {
         _this.bottom = 0;
         _this.fixedPosition = index;
         _this.zIndex = (setting.center * 2 + 1) - Math.abs(index - setting.center);
+        _this.initSize();
         _this.init();
         return _this;
     }
     CarouselItem.prototype.init = function () {
         this.initData();
+    };
+    CarouselItem.prototype.initSize = function () {
+        this.element.style.cssText += "; \n      width: " + this.setting.cardWidth + "px;\n      height: " + this.setting.cardHeight + "px;\n    ";
     };
     CarouselItem.prototype.initData = function () {
         this.left = this.index <= this.setting.center ?
@@ -399,7 +413,7 @@ var CarouselItem = /** @class */ (function (_super) {
         else {
             this.element.classList.remove('current');
         }
-        this.element.style.cssText += "; \n      width: " + this.setting.cardWidth + "px;\n      height: " + this.setting.cardHeight + "px;\n      left: " + this.left + "px; \n      z-index: " + this.zIndex + "; \n      bottom: " + this.bottom + "px;\n    ";
+        this.element.style.cssText += "; \n      left: " + this.left + "px; \n      z-index: " + this.zIndex + "; \n      bottom: " + this.bottom + "px;\n    ";
     };
     return CarouselItem;
 }(Carousel));
